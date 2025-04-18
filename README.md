@@ -4,15 +4,26 @@ Ce guide explique la procédure complète d'installation d'OpenCore Legacy Patch
 
 ## Table des matières
 
-- [Prérequis](#prérequis)
-- [Clonage du dépôt](#clonage-du-dépôt)
-- [Configuration de l'environnement](#configuration-de-lenvironnement)
-- [Mise à jour du dépôt](#mise-à-jour-du-dépôt)
-- [Génération de l'EFI OpenCore](#génération-de-lefi-opencore)
-- [Installation d'OpenCore sur le disque interne](#installation-dopencore-sur-le-disque-interne)
-- [Application des patchs post-installation](#application-des-patchs-post-installation)
-- [Script d'automatisation](#script-dautomatisation)
-- [Dépannage](#dépannage)
+- [Guide d'installation d'OpenCore Legacy Patcher](#guide-dinstallation-dopencore-legacy-patcher)
+  - [Table des matières](#table-des-matières)
+  - [Prérequis](#prérequis)
+  - [Clonage du dépôt](#clonage-du-dépôt)
+  - [Configuration de l'environnement](#configuration-de-lenvironnement)
+    - [Installation de Python](#installation-de-python)
+    - [Installation des dépendances](#installation-des-dépendances)
+  - [Mise à jour du dépôt](#mise-à-jour-du-dépôt)
+  - [Génération de l'EFI OpenCore](#génération-de-lefi-opencore)
+  - [Installation d'OpenCore sur le disque interne](#installation-dopencore-sur-le-disque-interne)
+    - [Méthode 1 : Via l'interface graphique](#méthode-1--via-linterface-graphique)
+    - [Méthode 2 : Via la ligne de commande](#méthode-2--via-la-ligne-de-commande)
+  - [Application des patchs post-installation](#application-des-patchs-post-installation)
+    - [Méthode n° 1 : Via l'interface graphique](#méthode-n-1--via-linterface-graphique)
+    - [Méthode n° 2 : Via la ligne de commande](#méthode-n-2--via-la-ligne-de-commande)
+  - [Script d'automatisation](#script-dautomatisation)
+  - [Dépannage](#dépannage)
+    - [Réinitialisation du NVRAM](#réinitialisation-du-nvram)
+    - [Désinstallation d'OpenCore](#désinstallation-dopencore)
+    - [Vérification de l'installation](#vérification-de-linstallation)
 
 ## Prérequis
 
@@ -76,7 +87,7 @@ python3 OpenCore-Patcher-GUI.command --build --model iMac11,1 --verbose
 
 Le terminal affichera toutes les étapes de la génération. À la fin, vous verrez un message indiquant l'emplacement du dossier EFI généré :
 
-```
+```text
 Your OpenCore EFI for iMac11,1 has been built at:
     /Users/votre_utilisateur/Projets/OpenCore-Legacy-Patcher/Build-Folder/OpenCore-Build
 ```
@@ -88,9 +99,11 @@ Vous pouvez installer OpenCore de deux façons :
 ### Méthode 1 : Via l'interface graphique
 
 1. Lancez OpenCore Patcher :
+
    ```bash
    python3 OpenCore-Patcher-GUI.command
    ```
+
 2. Cliquez sur "Build and Install OpenCore"
 3. Sélectionnez votre modèle de Mac
 4. Sélectionnez l'option d'installation sur le disque interne
@@ -99,22 +112,26 @@ Vous pouvez installer OpenCore de deux façons :
 ### Méthode 2 : Via la ligne de commande
 
 1. Identifiez la partition EFI de votre disque interne :
+
    ```bash
    diskutil list
    # Repérez la partition EFI (généralement disk0s1)
    ```
 
 2. Montez la partition EFI :
+
    ```bash
    sudo diskutil mount disk0s1
    ```
 
 3. Copiez l'EFI généré vers la partition EFI :
+
    ```bash
    sudo cp -R ~/Projets/OpenCore-Legacy-Patcher/Build-Folder/OpenCore-Build/EFI /Volumes/EFI/
    ```
 
 4. Configurez le démarrage sur OpenCore :
+
    ```bash
    sudo bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/EFI/OC/OpenCore.efi
    ```
@@ -123,14 +140,14 @@ Vous pouvez installer OpenCore de deux façons :
 
 Après avoir installé macOS et démarré avec OpenCore, vous devez appliquer les patchs root pour activer complètement le support matériel :
 
-### Méthode 1 : Via l'interface graphique
+### Méthode n° 1 : Via l'interface graphique
 
 1. Lancez OpenCore Patcher dans macOS
 2. Cliquez sur "Post-Install Root Patch"
 3. Cliquez sur "Start Root Patching"
 4. Suivez les instructions et redémarrez quand demandé
 
-### Méthode 2 : Via la ligne de commande
+### Méthode n° 2 : Via la ligne de commande
 
 ```bash
 python3 OpenCore-Patcher-GUI.command --patch_system --volume "/Volumes/macOS Sequoia 15.4.1"
@@ -179,6 +196,7 @@ echo "Redémarrez avec : sudo reboot"
 ```
 
 Pour utiliser ce script :
+
 1. Enregistrez-le dans un fichier (par exemple `install_opencore.sh`)
 2. Rendez-le exécutable : `chmod +x install_opencore.sh`
 3. Exécutez-le: `sudo ./install_opencore.sh`
@@ -188,6 +206,7 @@ Pour utiliser ce script :
 ### Réinitialisation du NVRAM
 
 Si OpenCore ne démarre pas correctement, essayez de réinitialiser le NVRAM :
+
 1. Redémarrez votre Mac
 2. Maintenez enfoncées les touches ⌘ + ⌥ + P + R au démarrage
 3. Relâchez après le second signal sonore
@@ -195,6 +214,7 @@ Si OpenCore ne démarre pas correctement, essayez de réinitialiser le NVRAM :
 ### Désinstallation d'OpenCore
 
 Pour désinstaller OpenCore et revenir au démarrage normal :
+
 1. Montez la partition EFI : `sudo diskutil mount disk0s1`
 2. Supprimez le dossier EFI : `sudo rm -rf /Volumes/EFI/EFI`
 3. Réinitialisez le NVRAM au prochain démarrage
@@ -202,6 +222,7 @@ Pour désinstaller OpenCore et revenir au démarrage normal :
 ### Vérification de l'installation
 
 Si l'installation semble réussie mais que votre Mac ne démarre pas sur OpenCore :
+
 1. Vérifiez que la partition EFI contient bien les fichiers OpenCore
 2. Utilisez une clé USB de secours avec OpenCore installé
 3. Consultez les logs dans : `/Users/votre_utilisateur/Library/Logs/Dortania/`
@@ -211,4 +232,4 @@ Si l'installation semble réussie mais que votre Mac ne démarre pas sur OpenCor
 **Remarque importante** : OpenCore Legacy Patcher est un outil puissant qui permet d'installer des versions récentes de macOS sur des Mac non supportés. Cependant, il peut y avoir des limitations matérielles et certaines fonctionnalités peuvent ne pas fonctionner parfaitement. Utilisez-le à vos propres risques et gardez toujours une sauvegarde de vos données importantes.
 
 Citations :
-[1] Capture-decran-2025-04-17-a-18.53.52.jpg https://pplx-res.cloudinary.com/image/private/user_uploads/EnLYwXnbowsxxpA/Capture-decran-2025-04-17-a-18.53.52.jpg
+[1] Capture-decran-2025-04-17-a-18.53.52.jpg <https://pplx-res.cloudinary.com/image/private/user_uploads/EnLYwXnbowsxxpA/Capture-decran-2025-04-17-a-18.53.52.jpg>
