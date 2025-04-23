@@ -1,6 +1,6 @@
----
-
 # Procédure de compilation d’OpenCore Legacy Patcher sur macOS Intel
+
+---
 
 ## Objectif
 
@@ -101,6 +101,7 @@ python3 Build-Project.command
 ## Pour aller plus loin
 
 Pour générer un binaire universel compatible Apple Silicon, il faut :
+
 - Utiliser un environnement Python universel (python.org)
 - S’assurer que toutes les dépendances sont elles-mêmes universelles (ce qui est rarement le cas pour les modules natifs)
 
@@ -109,20 +110,20 @@ Pour générer un binaire universel compatible Apple Silicon, il faut :
 **Ajoutez ce fichier à la racine du projet, à côté du `README.md`, pour faciliter la compilation sur Mac Intel et le partage de la procédure avec d’autres contributeurs.**
 
 Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/77495420-01be-45f0-b10f-293baeea71bb/paste.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/c7603731-3c19-426d-b3ad-808ebcb862f3/paste-2.txt
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/af3854a5-20d3-4207-8783-39b62356c699/paste-3.txt
-[4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/10273645-5484-4b54-b64f-4741949ec71b/paste-4.txt
-[5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/6288222c-0ea4-4225-bac3-dce84981c9d1/paste-5.txt
-[6] https://stackoverflow.com/questions/76277947/i-have-a-markdown-file-that-has-errors-and-need-to-use-a-python3-12-to-find-the
-[7] https://github.com/tmarktaylor/phmutest
-[8] https://realpython.com/django-markdown/
-[9] https://www.honeybadger.io/blog/python-markdown/
-[10] https://python-markdown.github.io
-[11] https://superuser.com/questions/323657/how-to-get-the-python-markdown-command
-[12] https://github.com/Python-Markdown/markdown
-[13] https://pypi.org/project/Markdown/
-[14] https://packaging.python.org/guides/making-a-pypi-friendly-readme/
-[15] https://www.jetbrains.com/help/pycharm/markdown.html
+[1] <https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/77495420-01be-45f0-b10f-293baeea71bb/paste.txt>
+[2] <https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/c7603731-3c19-426d-b3ad-808ebcb862f3/paste-2.txt>
+[3] <https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/af3854a5-20d3-4207-8783-39b62356c699/paste-3.txt>
+[4] <https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/10273645-5484-4b54-b64f-4741949ec71b/paste-4.txt>
+[5] <https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/6288222c-0ea4-4225-bac3-dce84981c9d1/paste-5.txt>
+[6] <https://stackoverflow.com/questions/76277947/i-have-a-markdown-file-that-has-errors-and-need-to-use-a-python3-12-to-find-the>
+[7] <https://github.com/tmarktaylor/phmutest>
+[8] <https://realpython.com/django-markdown/>
+[9] <https://www.honeybadger.io/blog/python-markdown/>
+[10] <https://python-markdown.github.io>
+[11] <https://superuser.com/questions/323657/how-to-get-the-python-markdown-command>
+[12] <https://github.com/Python-Markdown/markdown>
+[13] <https://pypi.org/project/Markdown/>
+[14] <https://packaging.python.org/guides/making-a-pypi-friendly-readme/>
+[15] <https://www.jetbrains.com/help/pycharm/markdown.html>
 
 ---
