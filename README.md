@@ -1,8 +1,3 @@
-Note : **README.md** complet et moderne pour compiler la version Build Nightly d’OpenCore Legacy Patcher sur macOS Intel, incluant l’étape optionnelle de compilation EFI avec `gmake` et les précautions pour l’architecture x86_64. Ce guide intègre les conseils du dépôt valorisa, du SOURCE.md officiel et les problèmes courants rencontrés sur macOS Intel.
-
----
-
-```markdown
 # OpenCore Legacy Patcher – Compilation Build Nightly sur macOS Intel
 
 > **Attention : Build Nightly = version de développement**  
@@ -180,13 +175,3 @@ python3 Build-Project.command
 
 Cette procédure permet de compiler et d'utiliser la **Build Nightly** d’OpenCore Legacy Patcher sur un Mac Intel, en tenant compte des exigences de l’architecture x86_64 et des spécificités des versions de développement.  
 **N’utilisez les nightly que si vous acceptez les risques d’instabilité et souhaitez contribuer au projet ou tester les nouveautés.**
-
-```
-
----
-
-**Ce README.md est prêt à l’emploi et vaut pour documentation personnelle. Il intègre l’étape optionnelle de compilation EFI avec gmake, les précautions d’architecture, et les liens vers la documentation officielle et les guides valorisa/dortania.**
-
-Citations :
-[1] paste.txt https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40251661/00afd48d-56e9-49e1-994a-d056525aaed2/paste.txt
-
